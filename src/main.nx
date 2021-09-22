@@ -1,0 +1,152 @@
+func init
+string b=1
+string c=2
+string d=3
+string e=4
+string f=5
+string g=6
+string h=7
+string i=8
+string j=9
+endfunc
+
+func win
+	label top4
+	clrscr
+	print congratulations You won the game
+	print 1)menu
+	print 2)play again
+	input option2=
+	if %option2%==1 (
+		call menu
+	)
+	if %option2%==2 (
+		call game
+	)
+	goto top4
+endfunc
+
+func menu
+	label top1
+	clrscr
+	print 1)start game
+	print 2)exit
+	input option=
+	if %option%==1 (
+		call game
+	)
+	if %option%==2 (
+		exit
+	)
+	goto top1
+endfunc
+
+func game
+call init
+label top2
+clrscr
+print %b% %c% %d%
+print %e% %f% %g%
+print %h% %i% %j%
+ping localhost -n 2 >nul
+key 123456789
+
+if %errorlevel%==1 (
+	if %b%==1 (
+		string b=O
+		string c=X
+	)
+
+)
+if %errorlevel%==2 (
+	if %c%==2 (
+		string c=O
+		string d=X
+	)
+)
+if %errorlevel%==3 (
+	if %d%==3 (
+		string d=O
+		string e=X
+	)
+)
+if %errorlevel%==4 (
+	if %e%==4 (	
+		string e=O
+		string f=X
+	)
+)
+if %errorlevel%==5 (
+	if %f%==5 (
+		string f=O
+		string g=X
+	)
+)
+if %errorlevel%==6 (
+	if %g%==6 (
+		string g=O
+		string h=X
+	)
+)
+if %errorlevel%==7 (
+	if %h%==7 (
+		string h=O
+		string i=X
+	)
+)
+if %errorlevel%==8 (
+	if %i%==8 (
+		string i=O
+		string j=X
+	)
+)
+if %errorlevel%==9 (
+	if %j%==9 (
+		string j=O
+		string b=X
+	)
+)
+if %b%==O (
+	if %f%==O (
+		if %j%==O (
+			call win
+		)
+	)
+)
+
+if %b%==O (
+	if %e%==O (
+		if %h%==O (
+			call win
+		)
+	)
+)
+if %d%==O (
+	if %f%==O (
+		if %h%==O (
+			call win
+		)
+	)
+)
+if %d%==O (
+	if %g%==O (
+		if %j%==O (
+			call win
+		)
+	)
+)
+if %c%==O (
+	if %f%==O (
+		if %i%==O (
+			call win
+		)
+	)
+)
+
+goto top2
+endfunc
+
+call menu
+
+
+
